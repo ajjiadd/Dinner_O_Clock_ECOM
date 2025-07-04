@@ -1,0 +1,68 @@
+.slider-item {
+  flex: 0 0 100%;
+  transition: transform 0.5s ease-in-out;
+}
+.slider-item img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.featured-dish img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+.testimonial-card {
+  transition: transform 0.3s;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+.promotion-card img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+.menu-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.menu-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.menu-card img {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+}
+#cart-modal {
+  transition: opacity 0.3s ease-in-out;
+}
+#cart-modal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.plan-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.team-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+}
+#card-element {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+}

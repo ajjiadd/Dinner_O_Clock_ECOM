@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinner O'clock - Logout</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Navigation -->
+  <header class="bg-blue-600 text-white p-4 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Dinner O'clock</h1>
+      <nav class="space-x-4">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="menu.html" class="hover:underline">Menu</a>
+        <a href="subscription.html" class="hover:underline">Subscriptions</a>
+        <a href="order.html" class="hover:underline">Order</a>
+        <a href="catering.html" class="hover:underline">Catering</a>
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <span id="auth-links"></span>
+        <button id="cart-button" class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200">Cart (<span id="cart-count">0</span>)</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Logout Section -->
+  <section class="container mx-auto py-12 text-center">
+    <h2 class="text-3xl font-bold mb-4">Logging Out...</h2>
+    <p class="text-gray-600 mb-6">You are being logged out. Redirecting to the homepage...</p>
+    <a href="index.html" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Back to Home</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto text-center">
+      <p>© 2025 Dinner O'clock. All rights reserved.</p>
+      <p class="mt-2">Contact us: <a href="mailto:support@dinneroclock.com" class="underline">support@dinneroclock.com</a> | +123-456-7890</p>
+      <div class="mt-4 space-x-4">
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="privacy.html" class="hover:underline">Privacy Policy</a>
+      </div>
+      <div class="mt-4 flex justify-center space-x-4">
+        <a href="https://facebook.com" class="text-2xl">📘</a>
+        <a href="https://twitter.com" class="text-2xl">🐦</a>
+        <a href="https://instagram.com" class="text-2xl">📸</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/logout.js"></script>
+</body>
+</html>

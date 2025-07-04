@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinner O'clock - About Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation -->
+    <header class="bg-blue-600 text-white p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Dinner O'clock</h1>
+            <nav class="space-x-4">
+                <a href="index.html" class="hover:underline">Home</a>
+                <a href="menu.html" class="hover:underline">Menu</a>
+                <a href="subscription.html" class="hover:underline">Subscriptions</a>
+                <a href="order.html" class="hover:underline">Order</a>
+                <a href="catering.html" class="hover:underline">Catering</a>
+                <a href="about.html" class="hover:underline">About</a>
+                <a href="contact.html" class="hover:underline">Contact</a>
+                <span id="auth-links"></span>
+                <button id="cart-button" class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200">Cart (<span
+                        id="cart-count">0</span>)</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gray-200 py-12 text-center">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-4">About Dinner O'clock</h2>
+            <p class="text-gray-600 mb-6">Discover our passion for bringing world-mix cuisine to your table.</p>
+            <a href="menu.html" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="container mx-auto py-12">
+        <h2 class="text-3xl font-bold text-center mb-8">Our Mission</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto text-center">
+            At Dinner O'clock, we believe food is a universal language that brings people together. Our mission is to
+            deliver
+            delicious, high-quality meals inspired by cuisines from around the globe, crafted with fresh ingredients and
+            delivered with care. Whether it's a quick weeknight dinner or a grand event, we're here to make every meal
+            memorable.
+        </p>
+    </section>
+
+    <!-- Team Section -->
+    <section class="bg-gray-50 py-12">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-8">Meet Our Team</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="team-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <img src="/uploads/chef.jpg" alt="Chef" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">Anna Smith</h3>
+                    <p class="text-gray-600">Head Chef</p>
+                    <p class="text-gray-500 mt-2">Bringing global flavors to your plate with over 15 years of culinary
+                        expertise.</p>
+                </div>
+                <div class="team-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <img src="/Uploads/manager.jpg" alt="Manager"
+                        class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">John Doe</h3>
+                    <p class="text-gray-600">Operations Manager</p>
+                    <p class="text-gray-500 mt-2">Ensuring seamless delivery and customer satisfaction every day.</p>
+                </div>
+                <div class="team-card bg-white p-6 rounded-lg shadow-md text-center">
+                    <img src="/Uploads/nutritionist.jpg" alt="Nutritionist"
+                        class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold">Lisa Brown</h3>
+                    <p class="text-gray-600">Nutritionist</p>
+                    <p class="text-gray-500 mt-2">Crafting balanced, healthy meals tailored to your dietary needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="container mx-auto py-12 text-center">
+        <h2 class="text-3xl font-bold mb-4">Ready to Savor the Flavor?</h2>
+        <p class="text-gray-600 mb-6">Join us for a culinary journey or reach out with any questions!</p>
+        <div class="space-x-4">
+            <a href="menu.html" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">View Menu</a>
+            <a href="contact.html" class="bg-gray-300 text-gray-800 px-6 py-3 rounded hover:bg-gray-400">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>© 2025 Dinner O'clock. All rights reserved.</p>
+            <p class="mt-2">Contact us: <a href="mailto:support@dinneroclock.com"
+                    class="underline">support@dinneroclock.com</a> | +123-456-7890</p>
+            <div class="mt-4 space-x-4">
+                <a href="about.html" class="hover:underline">About</a>
+                <a href="contact.html" class="hover:underline">Contact</a>
+                <a href="privacy.html" class="hover:underline">Privacy Policy</a>
+            </div>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="https://facebook.com" class="text-2xl">📘</a>
+                <a href="https://twitter.com" class="text-2xl">🐦</a>
+                <a href="https://instagram.com" class="text-2xl">📸</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/about.js"></script>
+</body>
+
+</html>

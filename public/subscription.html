@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dinner O'clock - Subscriptions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Navigation -->
+  <header class="bg-blue-600 text-white p-4 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">Dinner O'clock</h1>
+      <nav class="space-x-4">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="menu.html" class="hover:underline">Menu</a>
+        <a href="subscription.html" class="underline">Subscriptions</a>
+        <a href="order.html" class="hover:underline">Order</a>
+        <a href="catering.html" class="hover:underline">Catering</a>
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="login.html" class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200">Login</a>
+        <button id="cart-button" class="bg-white text-blue-600 px-4 py-2 rounded hover:bg-gray-200">Cart (<span id="cart-count">0</span>)</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Subscription Plans Section -->
+  <section class="container mx-auto py-12">
+    <h2 class="text-3xl font-bold text-center mb-8">Choose Your Subscription Plan</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <!-- Full Week Plan -->
+      <div class="plan-card bg-white p-6 rounded-lg shadow-md text-center">
+        <h3 class="text-2xl font-semibold mb-4">Full Week Plan</h3>
+        <p class="text-gray-600 mb-4">Enjoy our world-mix cuisine every day of the week.</p>
+        <p class="text-3xl font-bold mb-4">$50/week</p>
+        <ul class="text-gray-600 mb-6">
+          <li>7 meals per week</li>
+          <li>Free delivery</li>
+          <li>Access to exclusive dishes</li>
+        </ul>
+        <button class="select-plan bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700" data-plan="full_week">Select Plan</button>
+      </div>
+      <!-- Custom Days Plan -->
+      <div class="plan-card bg-white p-6 rounded-lg shadow-md text-center">
+        <h3 class="text-2xl font-semibold mb-4">Custom Days Plan</h3>
+        <p class="text-gray-600 mb-4">Choose your days for a flexible dining experience.</p>
+        <p class="text-3xl font-bold mb-4">$10/day</p>
+        <ul class="text-gray-600 mb-6">
+          <li>Minimum 3 days/week</li>
+          <li>Free delivery on 5+ days</li>
+          <li>Customizable meal options</li>
+        </ul>
+        <button class="select-plan bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700" data-plan="custom_days">Select Plan</button>
+      </div>
+    </div>
+
+    <!-- Subscription Form -->
+    <div class="bg-white p-6 rounded-lg shadow-md">
+      <h3 class="text-2xl font-semibold mb-4">Subscription Details</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-gray-700 mb-2">Plan Type</label>
+          <input type="text" id="plan-type" class="w-full p-2 border rounded" readonly>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">Start Date</label>
+          <input type="date" id="start-date" class="w-full p-2 border rounded" min="2025-07-05">
+        </div>
+        <div id="custom-days-field" class="md:col-span-2 hidden">
+          <label class="block text-gray-700 mb-2">Select Days</label>
+          <div class="flex flex-wrap gap-2">
+            <label><input type="checkbox" class="day-checkbox" value="Mon"> Monday</label>
+            <label><input type="checkbox" class="day-checkbox" value="Tue"> Tuesday</label>
+            <label><input type="checkbox" class="day-checkbox" value="Wed"> Wednesday</label>
+            <label><input type="checkbox" class="day-checkbox" value="Thu"> Thursday</label>
+            <label><input type="checkbox" class="day-checkbox" value="Fri"> Friday</label>
+            <label><input type="checkbox" class="day-checkbox" value="Sat"> Saturday</label>
+            <label><input type="checkbox" class="day-checkbox" value="Sun"> Sunday</label>
+          </div>
+        </div>
+      </div>
+      <button id="submit-subscription" class="mt-6 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Subscribe Now</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto text-center">
+      <p>© 2025 Dinner O'clock. All rights reserved.</p>
+      <p class="mt-2">Contact us: <a href="mailto:support@dinneroclock.com" class="underline">support@dinneroclock.com</a> | +123-456-7890</p>
+      <div class="mt-4 space-x-4">
+        <a href="about.html" class="hover:underline">About</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="privacy.html" class="hover:underline">Privacy Policy</a>
+      </div>
+      <div class="mt-4 flex justify-center space-x-4">
+        <a href="https://facebook.com" class="text-2xl">📘</a>
+        <a href="https://twitter.com" class="text-2xl">🐦</a>
+        <a href="https://instagram.com" class="text-2xl">📸</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/subscription.js"></script>
+</body>
+</html>
