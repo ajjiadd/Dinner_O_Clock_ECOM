@@ -5,6 +5,8 @@ const cors = require('cors');
 const session = require('express-session');
 const path = require('path');
 const Stripe = require('stripe');
+const adminRoutes = require('./admin/routes/adminroutes');
+
 const stripe = Stripe('sk_test_your_stripe_secret_key'); // Replace with your Stripe secret key
 
 const app = express();
@@ -14,7 +16,7 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', express.static(path.join(__dirname, 'admin')));
-app.use('/uploads', express.static(path.join(__dirname, 'Uploads')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Session middleware
 app.use(session({
@@ -43,6 +45,9 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
 });
 const upload = multer({ storage });
+
+// Admin routes
+app.use('/api/admin', adminRoutes);
 
 // API endpoint for login
 app.post('/api/login', (req, res) => {
@@ -94,14 +99,12 @@ app.post('/api/user/update', (req, res) => {
   if (!/^\d{3}-\d{3}-\d{4}$/.test(phone)) {
     return res.status(400).json({ error: 'Invalid phone number format (use 123-456-7890)' });
   }
-  // Check for email conflict
   const checkEmailSql = 'SELECT id FROM users WHERE email = ? AND id != ?';
   db.query(checkEmailSql, [email, req.session.user.id], (err, results) => {
     if (err) return res.status(500).json({ error: 'Database error' });
     if (results.length > 0) {
       return res.status(400).json({ error: 'Email already registered' });
     }
-    // Update user
     const updateSql = 'UPDATE users SET name = ?, email = ?, address = ?, phone = ? WHERE id = ?';
     db.query(updateSql, [name, email, address, phone, req.session.user.id], (err, result) => {
       if (err) return res.status(500).json({ error: 'Database error' });
@@ -123,17 +126,15 @@ app.post('/api/signup', (req, res) => {
   if (password.length < 6) {
     return res.status(400).json({ error: 'Password must be at least 6 characters' });
   }
-  // if (!/^\d{3}-\d{3}-\d{4}$/.test(phone)) {
-  //   return res.status(400).json({ error: 'Invalid phone number format (use 123-456-7890)' });
-  // }
-  // Check for existing email
+  if (!/^\d{3}-\d{3}-\d{4}$/.test(phone)) {
+    return res.status(400).json({ error: 'Invalid phone number format (use 123-456-7890)' });
+  }
   const checkEmailSql = 'SELECT id FROM users WHERE email = ?';
   db.query(checkEmailSql, [email], (err, results) => {
     if (err) return res.status(500).json({ error: 'Database error' });
     if (results.length > 0) {
       return res.status(400).json({ error: 'Email already registered' });
     }
-    // Insert new user
     const sql = 'INSERT INTO users (name, email, password, address, phone) VALUES (?, ?, ?, ?, ?)';
     db.query(sql, [name, email, password, address, phone], (err, result) => {
       if (err) return res.status(500).json({ error: 'Database error' });
@@ -191,10 +192,8 @@ app.post('/api/orders', (req, res) => {
   if (!user_id || !order_date || !delivery_type || !total_price || !items || items.length === 0 || !payment_method) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
-  // Start transaction
   db.beginTransaction(err => {
     if (err) return res.status(500).json({ error: 'Database error' });
-    // Insert order
     const orderSql = 'INSERT INTO orders (user_id, order_date, delivery_type, total_price, address) VALUES (?, ?, ?, ?, ?)';
     db.query(orderSql, [user_id, order_date, delivery_type, total_price, address], (err, result) => {
       if (err) {
@@ -202,7 +201,6 @@ app.post('/api/orders', (req, res) => {
         return res.status(500).json({ error: 'Database error' });
       }
       const orderId = result.insertId;
-      // Insert order items
       const itemSql = 'INSERT INTO order_items (order_id, menu_item_id, quantity, price) VALUES ?';
       const itemValues = items.map(item => [orderId, item.menu_item_id, item.quantity, item.price]);
       db.query(itemSql, [itemValues], (err) => {
@@ -210,7 +208,6 @@ app.post('/api/orders', (req, res) => {
           db.rollback();
           return res.status(500).json({ error: 'Database error' });
         }
-        // Insert payment
         const paymentSql = 'INSERT INTO payments (order_id, payment_method, payment_status, payment_intent_id, amount) VALUES (?, ?, ?, ?, ?)';
         const paymentStatus = payment_method === 'cod' ? 'pending' : 'completed';
         db.query(paymentSql, [orderId, payment_method, paymentStatus, payment_intent_id || null, total_price], (err) => {
@@ -239,7 +236,7 @@ app.post('/api/payments', async (req, res) => {
   }
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(amount), // Amount in cents
+      amount: Math.round(amount),
       currency: 'usd',
       payment_method_types: ['card']
     });

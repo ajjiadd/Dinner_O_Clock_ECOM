@@ -1,47 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Hero Slider
-  const slider = document.getElementById('slider');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  let currentIndex = 0;
-  let slides = [];
+  // // Hero Slider
+  // const slider = document.getElementById('slider');
+  // const prevBtn = document.getElementById('prevBtn');
+  // const nextBtn = document.getElementById('nextBtn');
+  // let currentIndex = 0;
+  // let slides = [];
 
-  // Fetch featured menu items for slider
-  fetch('/api/featured-menu')
-    .then(response => response.json())
-    .then(data => {
-      slides = data;
-      renderSlides();
-      startAutoSlide();
-    })
-    .catch(error => console.error('Error fetching menu:', error));
+  // // Fetch featured menu items for slider
+  // fetch('/api/featured-menu')
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     slides = data;
+  //     renderSlides();
+  //     startAutoSlide();
+  //   })
+  //   .catch(error => console.error('Error fetching menu:', error));
 
-  function renderSlides() {
-    slider.innerHTML = slides.map(item => `
-      <div class="slider-item w-full h-full relative">
-        <img src="${item.image_url}" alt="${item.name}" class="w-full h-full">
-        <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
-          <h2 class="text-2xl font-bold">${item.name}</h2>
-          <p>${item.description}</p>
-          <p class="font-semibold">$${item.price}</p>
-          <a href="order.html" class="mt-2 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order Now</a>
-        </div>
-      </div>
-    `).join('');
-    slider.style.transform = `translateX(0)`;
-  }
+  // function renderSlides() {
+  //   slider.innerHTML = slides.map(item => `
+  //     <div class="slider-item w-full h-full relative">
+  //       <img src="${item.image_url}" alt="${item.name}" class="w-full h-full">
+  //       <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
+  //         <h2 class="text-2xl font-bold">${item.name}</h2>
+  //         <p>${item.description}</p>
+  //         <p class="font-semibold">$${item.price}</p>
+  //         <a href="order.html" class="mt-2 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Order Now</a>
+  //       </div>
+  //     </div>
+  //   `).join('');
+  //   slider.style.transform = `translateX(0)`;
+  // }
 
-  function moveSlide(direction) {
-    currentIndex = (currentIndex + direction + slides.length) % slides.length;
-    slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-  }
+  // function moveSlide(direction) {
+  //   currentIndex = (currentIndex + direction + slides.length) % slides.length;
+  //   slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+  // }
 
-  function startAutoSlide() {
-    setInterval(() => moveSlide(1), 5000);
-  }
+  // function startAutoSlide() {
+  //   setInterval(() => moveSlide(1), 5000);
+  // }
 
-  prevBtn.addEventListener('click', () => moveSlide(-1));
-  nextBtn.addEventListener('click', () => moveSlide(1));
+  // prevBtn.addEventListener('click', () => moveSlide(-1));
+  // nextBtn.addEventListener('click', () => moveSlide(1));
 
   // Featured Dishes
   const featuredDishes = document.getElementById('featured-dishes');
